@@ -1,0 +1,4 @@
+<div .container>
+    <form method=post action=@{EditPublicationR publicationId} enctype=#{enctype}>
+        ^{widget}
+        <button .btn .btn-primary>Submit

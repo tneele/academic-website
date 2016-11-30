@@ -1,0 +1,31 @@
+<div .container>
+    $maybe _ <- maid
+        <div .row>
+            <button type="button" .btn .btn-primary .btn-sm>
+                Add publication
+    <div .row>
+        $forall Entity publicationId publication <- publications
+            $maybe _ <- maid
+                <a href="@{EditPublicationR publicationId}" .pull-right>
+                    <span .glyphicon .glyphicon-edit>
+            <p>
+                <i>#{publicationAuthors publication}
+                <br>
+                $maybe url <- publicationUrl publication
+                    <a target="_blank" href="#{url}"><b>#{publicationTitle publication}</b>
+                    .
+                $nothing
+                    <b>#{publicationTitle publication}.
+                $maybe volumeTitle <- publicationVolumeTitle publication
+                    \ <i>#{volumeTitle}</i>.
+                $maybe series <- publicationSeries publication
+                    \ #{series},
+                $maybe volume <- publicationVolume publication
+                    \ volume #{volume}
+                $maybe issue <- publicationIssue publication
+                    \ (#{issue})
+                $maybe pages <- publicationPages publication
+                    \ pages #{pages},
+                $maybe publisher <- publicationPublisher publication
+                    \ #{publisher},
+                \ #{fst3 $ toGregorian $ publicationPublished publication}.

@@ -1,0 +1,30 @@
+User
+    ident Text
+    password Text Maybe
+    UniqueUser ident
+    deriving Typeable
+Email
+    email Text
+    userId Text Maybe
+    verkey Text Maybe
+    UniqueEmail email
+Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
+    message Text
+    userId Text Maybe
+    deriving Eq
+    deriving Show
+Publication
+    title Text
+    authors Text
+    published Day
+    publisher Text Maybe
+    volumeTitle Text Maybe
+    pages Text Maybe
+    series Text Maybe
+    volume Text Maybe
+    issue Text Maybe
+    url Text Maybe
+    -- Publication type: Conference | Journal | Editorship | Technical report | Thesis | Book
+
+
+ -- By default this file is used in Model.hs (which is imported by Foundation.hs)

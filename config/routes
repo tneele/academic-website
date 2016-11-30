@@ -1,0 +1,14 @@
+/static StaticR Static appStatic
+/auth   AuthR   Auth   getAuth
+
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
+
+/ HomeR GET POST
+/publications PublicationsR GET
+/publication/edit/#PublicationId EditPublicationR GET POST
+/publication/add AddPublicationR GET POST
+
+/comments CommentR POST
+
+/profile ProfileR GET
