@@ -1,7 +1,7 @@
 <div .container>
     $maybe _ <- maid
         <div .row>
-            <button type="button" .btn .btn-primary .btn-sm>
+            <a href="@{AddPublicationR}" .btn .btn-primary .btn-sm>
                 Add publication
     <div .row>
         $forall Entity publicationId publication <- publications

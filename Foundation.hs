@@ -15,6 +15,9 @@ import Yesod.Core.Types     (Logger)
 import qualified Yesod.Core.Unsafe as Unsafe
 import qualified Data.CaseInsensitive as CI
 import qualified Data.Text.Encoding as TE
+import qualified Data.Text.Lazy.Encoding as TLE
+import qualified Data.Text.Lazy as TL
+import Data.Digest.Pure.SHA (sha256,showDigest)
 
 -- | The foundation datatype for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -147,9 +150,9 @@ instance Yesod App where
     isAuthorized RobotsR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized PublicationsR _ = return Authorized
-    isAuthorized (EditPublicationR _) _ = return AuthenticationRequired
-    isAuthorized AddPublicationR _ = return AuthenticationRequired
 
+    isAuthorized (EditPublicationR _) _ = isAuthenticated
+    isAuthorized AddPublicationR _ = isAuthenticated
     isAuthorized ProfileR _ = isAuthenticated
 
     -- This function creates static content files in the static folder
@@ -203,13 +206,15 @@ data SiteManager = SiteManager
     deriving Show
 
 siteManagers :: [SiteManager]
-siteManagers = [SiteManager "admin" "secret"]
+siteManagers = [SiteManager "admin" "334d63a3627d1aa6bcea49dc8a208cec03e1c3c38f65df4e974ffcd0126e3321"]
 
 lookupUser :: Text -> Maybe SiteManager
 lookupUser username = find (\m -> manUsername m == username) siteManagers
 
 validPassword :: Text -> Text -> Bool
-validPassword u p = isJust $ find (\m -> manUsername m == u && manPassword m == p) siteManagers
+validPassword u p = case lookupUser u of
+    Just m -> manPassword m == (pack . showDigest . sha256 . TLE.encodeUtf8 $ TL.fromStrict p)
+    Nothing -> False
 
 instance YesodAuth App where
     type AuthId App = Text
