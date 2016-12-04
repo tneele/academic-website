@@ -247,6 +247,8 @@ instance YesodAuth App where
 
     authHttpManager = getHttpManager
 
+    authLayout widget = defaultLayout [whamlet| <div .container> ^{widget} |]
+
 -- | Access function to determine if a user is logged in.
 isAuthenticated :: Handler AuthResult
 isAuthenticated = do
