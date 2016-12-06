@@ -2,6 +2,8 @@ module Handler.Publications where
 
 import Import
 import Yesod.Form.Bootstrap3 (renderBootstrap3, bfs, BootstrapFormLayout(BootstrapBasicForm))
+import Network.Wai (requestMethod)
+--import Network.HTTP.Types.Method (methodGet,methodPost)
 
 getPublicationsR :: Handler Html
 getPublicationsR = do
@@ -26,56 +28,39 @@ publicationForm mpublication = Publication
     <*> aopt textField (bfs ("Issue" :: Text)) (publicationIssue <$> mpublication)
     <*> aopt textField (bfs ("URL" :: Text)) (publicationUrl <$> mpublication)
 
-getEditPublicationR :: PublicationId -> Handler Html
-getEditPublicationR publicationId = do
+handleForm :: (RedirectUrl (HandlerSite Handler) url) => Text -> (Widget -> Enctype -> Widget) -> Maybe a -> (Maybe a -> AForm Handler a) -> (a -> Handler b) -> url -> Handler Html
+handleForm obj_name template obj form succ_f red_url = do
+    req <- waiRequest
+    case parseMethod $ requestMethod req of
+        Right GET -> do
+            (widget, enctype) <- generateFormPost $ renderBootstrap3 BootstrapBasicForm (form obj)
+            defaultLayout $ do
+                setTitle $ toHtml $ "Edit " ++ obj_name
+                template widget enctype
+        Right POST -> do
+            ((result, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm (form obj)
+            case result of
+                FormSuccess form_result -> do
+                    _ <- succ_f form_result
+                    setMessage $ toHtml $ "Succesfully edited " ++ obj_name ++ "."
+                    redirect red_url
+                FormFailure errors -> do
+                    setMessage $ toHtml $ "The following errors occured" ++ foldr (++) "" errors
+                    defaultLayout $ do
+                        setTitle $ toHtml $ "Edit " ++ obj_name
+                        template widget enctype
+                FormMissing -> do
+                    setMessage $ toHtml ("No data was submitted" :: Text)
+                    defaultLayout $ do
+                        setTitle $ toHtml $ "Edit " ++ obj_name
+                        template widget enctype
+        _ -> badMethod
+
+handleEditPublicationR :: PublicationId -> Handler Html
+handleEditPublicationR publicationId = do
     publication <- runDB $ get404 publicationId
-    (widget, enctype) <- generateFormPost $ renderBootstrap3 BootstrapBasicForm (publicationForm $ Just publication)
-    defaultLayout $ do
-        setTitle "Edit publication"
-        $(widgetFile "publication-edit")
+    handleForm "publication" (\widget enctype -> $(widgetFile "publication-edit")) (Just publication) publicationForm (\pub -> runDB $ replace publicationId pub) PublicationsR
 
-postEditPublicationR :: PublicationId -> Handler Html
-postEditPublicationR publicationId = do
-    publication <- runDB $ get404 publicationId
-    ((result, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm (publicationForm $ Just publication)
-    case result of
-        FormSuccess pub -> do
-            _ <- runDB $ replace publicationId pub
-            setMessage $ toHtml $ "Publication " ++ (publicationTitle pub) ++ " was edited succesfully."
-            redirect PublicationsR
-        FormFailure errors -> do
-            setMessage $ toHtml $ "The following errors occured" ++ foldr (++) "" errors
-            defaultLayout $ do
-                setTitle "Edit publication"
-                $(widgetFile "publication-edit")
-        FormMissing -> do
-            setMessage $ toHtml ("No data was submitted" :: Text)
-            defaultLayout $ do
-                setTitle "Edit publication"
-                $(widgetFile "publication-edit")
-
-getAddPublicationR :: Handler Html
-getAddPublicationR = do
-    (widget, enctype) <- generateFormPost $ renderBootstrap3 BootstrapBasicForm (publicationForm Nothing)
-    defaultLayout $ do
-        setTitle "Edit publication"
-        $(widgetFile "publication-add")
-
-postAddPublicationR :: Handler Html
-postAddPublicationR = do
-    ((result, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm (publicationForm Nothing)
-    case result of
-        FormSuccess pub -> do
-            _ <- runDB $ insert pub
-            setMessage $ toHtml $ "Publication " ++ (publicationTitle pub) ++ " was added succesfully."
-            redirect PublicationsR
-        FormFailure errors -> do
-            setMessage $ toHtml $ "The following errors occured" ++ foldr (++) "" errors
-            defaultLayout $ do
-                setTitle "Edit publication"
-                $(widgetFile "publication-add")
-        FormMissing -> do
-            setMessage $ toHtml ("No data was submitted" :: Text)
-            defaultLayout $ do
-                setTitle "Edit publication"
-                $(widgetFile "publication-add")
+handleAddPublicationR :: Handler Html
+handleAddPublicationR =
+    handleForm "publication" (\widget enctype -> $(widgetFile "publication-add")) Nothing publicationForm (\pub -> runDB $ insert pub) PublicationsR

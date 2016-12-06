@@ -6,8 +6,8 @@
 
 / HomeR GET POST
 /publications PublicationsR GET
-/publication/edit/#PublicationId EditPublicationR GET POST
-/publication/add AddPublicationR GET POST
+/publication/edit/#PublicationId EditPublicationR
+/publication/add AddPublicationR
 
 /comments CommentR POST
 
