@@ -7,13 +7,14 @@ import Network.Wai (requestMethod)
 
 getPublicationsR :: Handler Html
 getPublicationsR = do
-    publications <- runDB $ selectList [] [ Desc PublicationPublished ]
+    publications <- groupBy (\(Entity _ p) (Entity _ q) -> publicationYear p == publicationYear q) `fmap` (runDB $ selectList [] [ Desc PublicationPublished ])
     maid <- maybeAuthId
     defaultLayout $ do
         setTitle "Publications"
         $(widgetFile "publications")
     where
         fst3 (a,_,_) = a
+        publicationYear = fst3 . toGregorian . publicationPublished
 
 publicationForm :: Maybe Publication -> AForm Handler Publication
 publicationForm mpublication = Publication
