@@ -1,0 +1,16 @@
+<div .container>
+    <div .row .col-sm-12>
+        <h1>Contact
+
+        <p>
+            <span .glyphicon .glyphicon-envelope>
+            &nbsp;
+            <a href="mailto:t.s.neele@tue.nl">
+                t.s.neele@tue.nl
+
+        <p>
+            <span .glyphicon .glyphicon-briefcase style="display:inline-block;vertical-align:top">
+            <span style="display:inline-block;margin-left:5px;">
+                MetaForum 6.080<br>
+                De Groene Loper 5<br>
+                Eindhoven
