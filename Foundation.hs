@@ -184,6 +184,10 @@ instance Yesod App where
 
     makeLogger = return . appLogger
 
+setPageName :: Text -> Widget
+setPageName title = do
+    app <- getYesod
+    setTitle  $ toHtml $ title ++ (" - " :: Text) ++ (appSiteName $ appSettings app)
 
 -- Define breadcrumbs.
 instance YesodBreadcrumbs App where

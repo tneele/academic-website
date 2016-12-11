@@ -10,7 +10,7 @@ getPublicationsR = do
     publications <- groupBy (\(Entity _ p) (Entity _ q) -> publicationYear p == publicationYear q) `fmap` (runDB $ selectList [] [ Desc PublicationPublished ])
     maid <- maybeAuthId
     defaultLayout $ do
-        setTitle "Publications"
+        setPageName "Publications"
         $(widgetFile "publications")
     where
         fst3 (a,_,_) = a
