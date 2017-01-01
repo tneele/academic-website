@@ -5,6 +5,9 @@
 /robots.txt RobotsR GET
 
 / HomeR GET POST
+
+/projects ProjectsR GET
+
 /publications PublicationsR GET
 /publication/edit/#PublicationId EditPublicationR
 /publication/add AddPublicationR

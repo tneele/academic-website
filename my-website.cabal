@@ -26,6 +26,7 @@ library
                      Handler.Profile
                      Handler.Publications
                      Handler.Contact
+                     Handler.Projects
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
