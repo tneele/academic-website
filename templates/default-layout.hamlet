@@ -2,14 +2,18 @@
 <!-- Static navbar -->
 <nav .navbar.navbar-default.navbar-static-top>
     <div .container>
+
         <div .navbar-header>
             <button type="button" .navbar-toggle.collapsed data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation
                 <span class="icon-bar">
                 <span class="icon-bar">
                 <span class="icon-bar">
+            <div .navbar-brand>
+                <a href="@{HomeR}">
+                    <img src="@{StaticR img_icon_png}">
 
-        <div #navbar .collapse.navbar-collapse>
+        <div #navbar .collapse.navbar-collapse aria-expanded="false">
             <ul .nav.navbar-nav>
                 $forall MenuItem label route _ <- navbarLeftFilteredMenuItems
                     <li :Just route == mcurrentRoute:.active>
@@ -22,9 +26,9 @@
 
 <!-- Page Contents -->
 
-<div .container>
-    $maybe msg <- mmsg
-      <div .alert.alert-info #message>#{msg}
+$maybe msg <- mmsg
+    <div .container>
+        <div .alert.alert-info #message>#{msg}
 
 ^{widget}
 

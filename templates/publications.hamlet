@@ -6,7 +6,7 @@
                 <span .glyphicon .glyphicon-plus>
                 Add publication
         <a href="http://dblp.uni-trier.de/pers/hd/n/Neele:Thomas" .btn .btn-primary .btn-sm .pull-right>
-            <img src="@{StaticR img_dblp_png}" style="width:16px;height:16px;">
+            <img src="@{StaticR img_dblp_png}" width="16" height="16">
             My DBLP page
     <div .row .col-sm-12>
         $forall yearPublications <- publications

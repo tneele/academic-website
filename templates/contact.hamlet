@@ -14,3 +14,9 @@
                 MetaForum 6.080<br>
                 De Groene Loper 5<br>
                 Eindhoven
+
+        <p>
+            <img src="@{StaticR img_github_png}" height="15" width="15">
+            &nbsp;
+            <a href="https://github.com/ThomasNeele">
+                github.com/ThomasNeele

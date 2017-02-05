@@ -8,11 +8,12 @@ $newline text
             <a href="http://mcrl2.org/">
                 mCRL2
             \ is a complete toolset for model checking processes.
-            I am currently implementing a discretization algorithm for real time systems in the
+            I have implemented a discretization algorithm for real time systems in the
             <a href="http://mcrl2.org/web/user_manual/tools/experimental/lpsrealzone.html">
                 lpsrealzone
             \ tool.
-            This will enable the generation of state spaces for timed automata.
+            This enables the generation of state spaces for (small) timed automata.
+            Since that tool does not scale well, I am now working on other approaches to reason about the behaviour of timed processes.
     <div .row>
         <div .col-md-12>
             <h3>GPUexplore
@@ -24,7 +25,7 @@ $newline text
                 GPUexplore
             .
             I added partial-order reduction to improve the memory efficiency and improved the speed with a factor 11 over the previous version.
-            The thesis has been awarded with the Ngi-NGN Informatie Scriptieprijs (second prize) in 2016.
+            The thesis has been awarded with the Ngi-NGN Informatie Scriptieprijs (second prize) in 2016 and was nominated for the ENIAC best thesis award.
     <div .row>
         <div .col-md-12>
             <h3>IscasMC
@@ -32,7 +33,7 @@ $newline text
             <a href="http://iscasmc.ios.ac.cn/">
                 IscasMC
             .
-            In addition, I added
+            In addition, I added the parallel BDD package
             <a href="http://fmt.cs.utwente.nl/tools/sylvan/">
                 Sylvan
             \ as symbolic back-end.
@@ -43,6 +44,8 @@ $newline text
         <div .col-md-9>
             <h3>CanvasKurve
             A HTML5 remake of the game "Achtung die Kurve", created together with Joost van Doorn and Nick Schot.
+            This game is basically a multiplayer version of snake where you never stop growing.
+            The goal is to outmaneuver your friends. Using multiple keyboards is recommended.
             Most of this was put together in one weekend. A playable version can be found on
             <a href="http://canvaskurve.com/">
                 canvaskurve.com
@@ -54,13 +57,12 @@ $newline text
             <img src="@{StaticR img_canvaskurve_png}">
 
     <div .row>
-        <div .col-md-8>
+        <div .col-md-12>
             <h3>This website
-            This website is implemented in Haskell, and uses the
+            This website is implemented in Haskell, a purely functional language, and uses the
             <a href="http://www.yesodweb.com/">
                 Yesod
             \ web framework. Haskell's type system helps prevent security problems and prevents almost all the runtime bugs.
-        <div .col-md-4>
 
     <div .row>
         <div .col-md-12>

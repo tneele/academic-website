@@ -4,7 +4,7 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/ HomeR GET POST
+/ HomeR GET
 
 /projects ProjectsR GET
 
@@ -13,7 +13,3 @@
 /publication/add AddPublicationR
 
 /contact ContactR GET
-
-/comments CommentR POST
-
-/profile ProfileR GET

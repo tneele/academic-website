@@ -115,16 +115,6 @@ instance Yesod App where
                     , menuItemRoute = ContactR
                     , menuItemAccessCallback = True
                     }
-                , NavbarLeft $ MenuItem
-                    { menuItemLabel = "Profile"
-                    , menuItemRoute = ProfileR
-                    , menuItemAccessCallback = isJust muser
-                    }
-                , NavbarRight $ MenuItem
-                    { menuItemLabel = "Login"
-                    , menuItemRoute = AuthR LoginR
-                    , menuItemAccessCallback = isNothing muser
-                    }
                 , NavbarRight $ MenuItem
                     { menuItemLabel = "Logout"
                     , menuItemRoute = AuthR LogoutR
@@ -155,7 +145,6 @@ instance Yesod App where
 
     -- Routes not requiring authentication.
     isAuthorized (AuthR _) _ = return Authorized
-    isAuthorized CommentR _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
@@ -166,7 +155,6 @@ instance Yesod App where
 
     isAuthorized (EditPublicationR _) _ = isAuthenticated
     isAuthorized AddPublicationR _ = isAuthenticated
-    isAuthorized ProfileR _ = isAuthenticated
 
     -- This function creates static content files in the static folder
     -- and names them based on a hash of their content. This allows
@@ -205,7 +193,6 @@ setPageName title = do
 instance YesodBreadcrumbs App where
   breadcrumb HomeR = return ("Home", Nothing)
   breadcrumb (AuthR _) = return ("Login", Just HomeR)
-  breadcrumb ProfileR = return ("Profile", Just HomeR)
   breadcrumb  _ = return ("home", Nothing)
 
 -- How to run database actions.
@@ -219,18 +206,20 @@ instance YesodPersistRunner App where
 
 data SiteManager = SiteManager
     { manUsername :: Text
-    , manPassword :: Text }
+    , manPassword :: Text 
+    -- ^ The password field stored the SHA256 hash of the username appended with a colon and the plaintext password
+    }
     deriving Show
 
 siteManagers :: [SiteManager]
-siteManagers = [SiteManager "admin" "334d63a3627d1aa6bcea49dc8a208cec03e1c3c38f65df4e974ffcd0126e3321"]
+siteManagers = [SiteManager "thomas" "334d63a3627d1aa6bcea49dc8a208cec03e1c3c38f65df4e974ffcd0126e3321"]
 
 lookupUser :: Text -> Maybe SiteManager
 lookupUser username = find (\m -> manUsername m == username) siteManagers
 
 validPassword :: Text -> Text -> Bool
 validPassword u p = case lookupUser u of
-    Just m -> manPassword m == (pack . showDigest . sha256 . TLE.encodeUtf8 $ TL.fromStrict p)
+    Just m -> manPassword m == (pack . showDigest . sha256 . TLE.encodeUtf8 . TL.fromStrict $ u ++ ":" ++ p)
     Nothing -> False
 
 instance YesodAuth App where
@@ -264,7 +253,10 @@ instance YesodAuth App where
 
     authHttpManager = getHttpManager
 
-    authLayout widget = defaultLayout [whamlet| <div .container> ^{widget} |]
+    authLayout widget = defaultLayout [whamlet|
+        <div .container>
+            <h1>Login
+            ^{widget} |]
 
 -- | Access function to determine if a user is logged in.
 isAuthenticated :: Handler AuthResult

@@ -22,8 +22,6 @@ library
                      Settings.StaticFiles
                      Handler.Common
                      Handler.Home
-                     Handler.Comment
-                     Handler.Profile
                      Handler.Publications
                      Handler.Contact
                      Handler.Projects
@@ -95,6 +93,7 @@ library
                  , case-insensitive
                  , wai
                  , SHA
+                 , random
 
 executable         my-website
     if flag(library-only)
