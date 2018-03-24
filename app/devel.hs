@@ -1,5 +1,5 @@
 {-# LANGUAGE PackageImports #-}
-import "my-website" Application (develMain)
+import "academic-website" Application (develMain)
 import Prelude (IO)
 
 main :: IO ()

@@ -1,3 +1,14 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE ViewPatterns #-}
+{-# LANGUAGE ExplicitForAll #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE RecordWildCards #-}
+
 module Foundation where
 
 import Import.NoFoundation
@@ -206,7 +217,7 @@ instance YesodPersistRunner App where
 
 data SiteManager = SiteManager
     { manUsername :: Text
-    , manPassword :: Text 
+    , manPassword :: Text
     -- ^ The password field stored the SHA256 hash of the username appended with a colon and the plaintext password
     }
     deriving Show
