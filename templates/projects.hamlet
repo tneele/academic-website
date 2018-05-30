@@ -5,17 +5,20 @@ $newline text
     <div .row>
         <div .col-md-12>
             <h3>mCRL2
-            <a href="http://mcrl2.org/">
+            <a href="https://mcrl2.org/">
                 mCRL2
             \ is a complete toolset for model checking processes.
             I have worked on several approaches to perform model checking on real-time systems.
             The tools I have worked on are
-            <a href="http://mcrl2.org/web/user_manual/tools/experimental/lpsrealzone.html">
+            <a href="https://mcrl2.org/web/user_manual/tools/experimental/lpsrealzone.html">
                 lpsrealzone
             ,
-            <a href="http://mcrl2.org/web/user_manual/tools/experimental/lpssymbolicbisim.html">
+            <a href="https://mcrl2.org/web/user_manual/tools/experimental/lpssymbolicbisim.html">
                 lpssymbolicbisim
-            \ and pbessymbolicbisim.
+            \ and
+            <a href="https://mcrl2.org/web/user_manual/tools/experimental/pbessymbolicbisim.html">
+                pbessymbolicbisim
+            .
             The latter two are actually more general and can also deal with other kinds of infinite-state systems.
     <div .row>
         <div .col-md-12>
@@ -28,6 +31,7 @@ $newline text
                 GPUexplore
             .
             I added partial-order reduction to improve the memory efficiency and improved the speed with a factor 11 over the previous version.
+            This brought the total speed-up over a single-threaded implementation to well over a hundred times.
             The thesis has been awarded with the Ngi-NGN Informatie Scriptieprijs (second prize) in 2016 and was nominated for the ENIAC best thesis award.
     <div .row>
         <div .col-md-12>

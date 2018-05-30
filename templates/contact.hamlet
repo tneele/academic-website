@@ -18,5 +18,5 @@
         <p>
             <img src="@{StaticR img_github_png}" height="15" width="15">
             &nbsp;
-            <a href="https://github.com/ThomasNeele">
-                github.com/ThomasNeele
+            <a href="https://github.com/tneele">
+                github.com/tneele
