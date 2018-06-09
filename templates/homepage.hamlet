@@ -6,11 +6,15 @@
         <div .col-md-12>
             <h1>About me
             <p>
-                I am Thomas Neele, and I am a PhD student at the Eindhoven University of Technology. My project is part of a cooperation between the 
-                <a href="http://tue.nl/">
-                    TU/e
-                and
-                <a href="http://www.asml.com/">
+                I am Thomas Neele, and I am a PhD student at the
+                <a href="https://www.tue.nl/">
+                    Eindhoven University of Technology
+                (TU/e) in the group
+                <a href="https://fsa.win.tue.nl/">
+                    Formal Systems Analysis
+                .
+                My project is part of a collaboration between the TU/e and
+                <a href="https://www.asml.com/">
                     ASML
                 .
                 My main interest is model checking and its scalability problems.
