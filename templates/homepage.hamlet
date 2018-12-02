@@ -22,5 +22,17 @@
                 At the moment I am working on continuous-time models within the context of process algebra.
                 Ultimately, I want to apply my ideas at ASML.
             <p>
+                I finished both my bachelor and master in Computer Science at the
+                <a href="https://utwente.nl/">
+                    University of Twente
+                .
+                My master specialisation was Methods and Tools for Verification.
+                As part of the curriculum, I visited the 
+                <a href="http://lcs.ios.ac.cn/en/wiki/Main_Page">
+                    Institute of Software, Chinese Academy of Sciences
+                for an internship in the summer of 2015.
+            <p>
                 My background in model checking is diverse: I have experience with symbolic and explicit-state techniques, probabilistic models and real-time models, process algebra and also parallel implementations on GPUs.
-
+            <p>
+                During my master study I was a TA for the bachelor courses programming and also algorithms and data structures.
+                I currently run the exercise sessions and practical assignments for the course Automotive Software Engineering (2IWA0).

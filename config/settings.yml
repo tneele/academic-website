@@ -29,5 +29,5 @@ database:
   poolsize: "_env:SQLITE_POOLSIZE:10"
 
 site-name: Thomas Neele
-copyright: © Thomas Neele 2016
+copyright: © Thomas Neele
 #analytics: UA-YOURCODE

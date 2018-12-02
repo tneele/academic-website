@@ -5,6 +5,7 @@ $newline text
     <div .row>
         <div .col-md-12>
             <h3>mCRL2
+        <div .col-sm-8>
             <a href="https://mcrl2.org/">
                 mCRL2
             \ is a complete toolset for model checking processes.
@@ -20,6 +21,8 @@ $newline text
                 pbessymbolicbisim
             .
             The latter two are actually more general and can also deal with other kinds of infinite-state systems.
+        <div .col-sm-4>
+            <img  style="width:100%" src="@{StaticR img_mcrl2_svg}">
     <div .row>
         <div .col-md-12>
             <h3>GPUexplore
@@ -48,7 +51,7 @@ $newline text
 
     <h1>Non-academic projects
     <div .row>
-        <div .col-md-9>
+        <div .col-sm-9>
             <h3>CanvasKurve
             A HTML5 remake of the game "Achtung die Kurve", created together with
             <a href="http://www.joostvandoorn.com/">
@@ -68,7 +71,7 @@ $newline text
             <a href="https://github.com/JoostvDoorn/CanvasKurve">
                 Github#
             .
-        <div .col-md-3>
+        <div .col-sm-3>
             <img src="@{StaticR img_canvaskurve_png}">
 
     <div .row>
