@@ -13,17 +13,18 @@
             $maybe Entity _ publication <- listToMaybe yearPublications
                 <h4>#{publicationYear publication}
             $forall Entity publicationId publication <- yearPublications
+                $maybe url <- getPublicationUrl publication
+                    <a target="_blank" href="#{url}" .pull-right>
+                        <span .glyphbutton .glyphicon .glyphicon-new-window>
+                $nothing
+                    <span .pull-right .glyphbutton .glyphbutton-disabled .glyphicon .glyphicon-new-window>
                 $maybe _ <- maid
                     <a href="@{EditPublicationR publicationId}" .pull-right>
-                        <span .glyphicon .glyphicon-pencil>
+                        <span .glyphbutton .glyphicon .glyphicon-pencil>
                 <p>
                     <i>#{publicationAuthors publication}
                     <br>
-                    $maybe url <- publicationUrl publication
-                        <a target="_blank" href="#{url}"><b>#{publicationTitle publication}</b>
-                        .
-                    $nothing
-                        <b>#{publicationTitle publication}.
+                    <b>#{publicationTitle publication}.
                     $maybe volumeTitle <- publicationVolumeTitle publication
                         \ <i>#{volumeTitle}</i>.
                     $maybe series <- publicationSeries publication

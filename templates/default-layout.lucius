@@ -30,6 +30,12 @@
   }
 }
 
+.glyphbutton {
+  margin: 6px;
+}
+.glyphbutton-disabled {
+  color: lightgray;
+}
 
 /* Common styles for all types */
 .bs-callout {

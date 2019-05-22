@@ -21,6 +21,11 @@ getPublicationsR = do
         fst3 (a,_,_) = a
         publicationYear = fst3 . toGregorian . publicationPublished
 
+getPublicationUrl :: Publication -> Maybe Text
+getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ _ (Just doi)) = Just $ "https://doi.org/" ++ doi
+getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ (Just url) _) = Just url
+getPublicationUrl _ = Nothing
+
 publicationForm :: Maybe Publication -> AForm Handler Publication
 publicationForm mpublication = Publication
     <$> areq textField (bfs ("Title" :: Text)) (publicationTitle <$> mpublication)
@@ -33,6 +38,7 @@ publicationForm mpublication = Publication
     <*> aopt textField (bfs ("Volume" :: Text)) (publicationVolume <$> mpublication)
     <*> aopt textField (bfs ("Issue" :: Text)) (publicationIssue <$> mpublication)
     <*> aopt textField (bfs ("URL" :: Text)) (publicationUrl <$> mpublication)
+    <*> aopt textField (bfs ("DOI" :: Text)) (publicationDoi <$> mpublication)
 
 handleForm :: (RedirectUrl (HandlerSite Handler) url) => Text -> (Widget -> Enctype -> Widget) -> Maybe a -> (Maybe a -> AForm Handler a) -> (a -> Handler b) -> url -> Handler Html
 handleForm obj_name template obj form succ_f red_url = do
