@@ -10,6 +10,7 @@ Publication
     issue Text Maybe
     url Text Maybe
     doi Text Maybe
+    fileName String Maybe
     -- Publication type: Conference | Journal | Editorship | Technical report | Thesis | Book
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

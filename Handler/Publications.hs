@@ -22,12 +22,14 @@ getPublicationsR = do
         publicationYear = fst3 . toGregorian . publicationPublished
 
 getPublicationUrl :: Publication -> Maybe Text
-getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ _ (Just doi)) = Just $ "https://doi.org/" ++ doi
-getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ (Just url) _) = Just url
+getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ _ (Just doi) _) = Just $ "https://doi.org/" ++ doi
+getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ (Just url) _ _) = Just url
 getPublicationUrl _ = Nothing
 
-publicationForm :: Maybe Publication -> AForm Handler Publication
-publicationForm mpublication = Publication
+data PublicationForm = PublicationForm (Maybe String -> Publication) (Maybe FileInfo)
+
+publicationForm :: Maybe Publication -> AForm Handler PublicationForm
+publicationForm mpublication = PublicationForm <$> (Publication
     <$> areq textField (bfs ("Title" :: Text)) (publicationTitle <$> mpublication)
     <*> areq textField (bfs ("Authors" :: Text)) (publicationAuthors <$> mpublication)
     <*> areq dayField  (bfs ("Published" :: Text)) (publicationPublished <$> mpublication)
@@ -38,9 +40,10 @@ publicationForm mpublication = Publication
     <*> aopt textField (bfs ("Volume" :: Text)) (publicationVolume <$> mpublication)
     <*> aopt textField (bfs ("Issue" :: Text)) (publicationIssue <$> mpublication)
     <*> aopt textField (bfs ("URL" :: Text)) (publicationUrl <$> mpublication)
-    <*> aopt textField (bfs ("DOI" :: Text)) (publicationDoi <$> mpublication)
+    <*> aopt textField (bfs ("DOI" :: Text)) (publicationDoi <$> mpublication))
+    <*> fileAFormOpt "Paper PDF"
 
-handleForm :: (RedirectUrl (HandlerSite Handler) url) => Text -> (Widget -> Enctype -> Widget) -> Maybe a -> (Maybe a -> AForm Handler a) -> (a -> Handler b) -> url -> Handler Html
+handleForm :: (RedirectUrl (HandlerSite Handler) url) => Text -> (Widget -> Enctype -> Widget) -> Maybe Publication -> (Maybe Publication -> AForm Handler PublicationForm) -> (PublicationForm -> Handler b) -> url -> Handler Html
 handleForm obj_name template obj form succ_f red_url = do
     req <- waiRequest
     case parseMethod $ requestMethod req of
@@ -68,11 +71,36 @@ handleForm obj_name template obj form succ_f red_url = do
                         template widget enctype
         _ -> badMethod
 
+uploadDirectory :: FilePath
+uploadDirectory = "static/papers"
+
+paperFilePath :: String -> FilePath
+paperFilePath f = uploadDirectory </> f
+
+writeFileToServer :: FileInfo -> Handler FilePath
+writeFileToServer file = do
+    let filename = unpack $ fileName file
+        path = paperFilePath filename
+    liftIO $ fileMove file path
+    return filename
+
+addPublication :: PublicationForm -> Handler (Key Publication)
+addPublication (PublicationForm incompletePub mfileinfo) = do
+    mFileName <- writeFileToServer `mapM` mfileinfo
+    let pub = incompletePub mFileName
+    runDB $ insert pub
+
+editPublication :: PublicationId -> PublicationForm -> Handler ()
+editPublication publicationId (PublicationForm incompletePub mfileinfo) = do
+    mFileName <- writeFileToServer `mapM` mfileinfo
+    let pub = incompletePub mFileName
+    runDB $ replace publicationId pub
+
 handleEditPublicationR :: PublicationId -> Handler Html
 handleEditPublicationR publicationId = do
     publication <- runDB $ get404 publicationId
-    handleForm "publication" (\widget enctype -> $(widgetFile "publication-edit")) (Just publication) publicationForm (\pub -> runDB $ replace publicationId pub) PublicationsR
+    handleForm "publication" (\widget enctype -> $(widgetFile "publication-edit")) (Just publication) publicationForm (editPublication publicationId) PublicationsR
 
 handleAddPublicationR :: Handler Html
 handleAddPublicationR =
-    handleForm "publication" (\widget enctype -> $(widgetFile "publication-add")) Nothing publicationForm (\pub -> runDB $ insert pub) PublicationsR
+    handleForm "publication" (\widget enctype -> $(widgetFile "publication-add")) Nothing publicationForm addPublication PublicationsR

@@ -18,6 +18,11 @@
                         <span .glyphbutton .glyphicon .glyphicon-new-window>
                 $nothing
                     <span .pull-right .glyphbutton .glyphbutton-disabled .glyphicon .glyphicon-new-window>
+                $maybe filename <- publicationFileName publication
+                    <a target="_blank" href="@{StaticR (StaticRoute ["papers",pack filename] [])}" .pull-right>
+                        <span .glyphbutton .glyphicon .glyphicon-circle-arrow-down>
+                $nothing
+                    <span .pull-right .glyphbutton .glyphbutton-disabled .glyphicon .glyphicon-circle-arrow-down>
                 $maybe _ <- maid
                     <a href="@{EditPublicationR publicationId}" .pull-right>
                         <span .glyphbutton .glyphicon .glyphicon-pencil>
