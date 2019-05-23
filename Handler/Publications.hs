@@ -8,7 +8,7 @@ module Handler.Publications where
 import Import
 import Yesod.Form.Bootstrap3 (renderBootstrap3, bfs, BootstrapFormLayout(BootstrapBasicForm))
 import Network.Wai (requestMethod)
---import Network.HTTP.Types.Method (methodGet,methodPost)
+import System.Directory (removeFile)
 
 getPublicationsR :: Handler Html
 getPublicationsR = do
@@ -84,6 +84,12 @@ writeFileToServer file = do
     liftIO $ fileMove file path
     return filename
 
+deleteOldFile :: Maybe String -> Maybe String -> Handler ()
+deleteOldFile (Just newName) (Just oldName)
+    | newName /= oldName = liftIO $ removeFile $ uploadDirectory </> oldName
+    | otherwise = return ()
+deleteOldFile _ _ = return ()
+
 addPublication :: PublicationForm -> Handler (Key Publication)
 addPublication (PublicationForm incompletePub mfileinfo) = do
     mFileName <- writeFileToServer `mapM` mfileinfo
@@ -93,7 +99,9 @@ addPublication (PublicationForm incompletePub mfileinfo) = do
 editPublication :: PublicationId -> PublicationForm -> Handler ()
 editPublication publicationId (PublicationForm incompletePub mfileinfo) = do
     mFileName <- writeFileToServer `mapM` mfileinfo
-    let pub = incompletePub mFileName
+    oldFileName <- fmap publicationFileName $ runDB $ getJust publicationId
+    let pub = incompletePub (mFileName <|> oldFileName)
+    deleteOldFile mFileName oldFileName
     runDB $ replace publicationId pub
 
 handleEditPublicationR :: PublicationId -> Handler Html
