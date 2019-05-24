@@ -22,9 +22,9 @@ getPublicationsR = do
         publicationYear = fst3 . toGregorian . publicationPublished
 
 getPublicationUrl :: Publication -> Maybe Text
-getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ _ (Just doi) _) = Just $ "https://doi.org/" ++ doi
-getPublicationUrl (Publication _ _ _ _ _ _ _ _ _ (Just url) _ _) = Just url
-getPublicationUrl _ = Nothing
+getPublicationUrl pub = (fmap ("https://doi.org/" ++) mdoi) <|> murl
+    where mdoi = publicationDoi pub
+          murl = publicationUrl pub
 
 data PublicationForm = PublicationForm (Maybe String -> Publication) (Maybe FileInfo)
 
