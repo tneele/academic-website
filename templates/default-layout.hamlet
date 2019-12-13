@@ -1,28 +1,22 @@
 
 <!-- Static navbar -->
-<nav .navbar.navbar-default.navbar-static-top>
+<nav .navbar .navbar-expand-md .navbar-dark>
     <div .container>
+        <a .navbar-brand href="@{HomeR}">
+            <img src="@{StaticR img_icon_png}">
+        <button .navbar-toggler type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span .navbar-toggler-icon>
 
-        <div .navbar-header>
-            <button type="button" .navbar-toggle.collapsed data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation
-                <span class="icon-bar">
-                <span class="icon-bar">
-                <span class="icon-bar">
-            <div .navbar-brand>
-                <a href="@{HomeR}">
-                    <img src="@{StaticR img_icon_png}">
-
-        <div #navbar .collapse.navbar-collapse aria-expanded="false">
-            <ul .nav.navbar-nav>
+        <div #navbar .collapse .navbar-collapse .justify-content-between .align-items-center aria-expanded="false">
+            <ul .navbar-nav>
                 $forall MenuItem label route _ <- navbarLeftFilteredMenuItems
-                    <li :Just route == mcurrentRoute:.active>
-                        <a href="@{route}">#{label}
+                    <li .nav-item .mx-2 :Just route == mcurrentRoute:.active>
+                        <a .nav-link href="@{route}">#{label}
 
-            <ul .nav.navbar-nav.navbar-right>
+            <ul .navbar-nav>
                 $forall MenuItem label route _ <- navbarRightFilteredMenuItems
-                    <li :Just route == mcurrentRoute:.active>
-                        <a href="@{route}">#{label}
+                    <li .nav-item :Just route == mcurrentRoute:.active>
+                        <a .nav-link href="@{route}">#{label}
 
 <!-- Page Contents -->
 

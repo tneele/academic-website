@@ -4,28 +4,38 @@ $newline text
     <h1>Academic software
     <div .row>
         <div .col-md-12>
-            <h3>mCRL2
+            <h4>mCRL2
         <div .col-sm-8>
             <a href="https://mcrl2.org/">
                 mCRL2
-            \ is a complete toolset for model checking processes.
-            I have worked on several approaches to perform model checking on real-time systems.
-            The tools I have worked on are
-            <a href="https://mcrl2.org/web/user_manual/tools/experimental/lpsrealzone.html">
-                lpsrealzone
-            ,
-            <a href="https://mcrl2.org/web/user_manual/tools/experimental/lpssymbolicbisim.html">
+            \ is a toolset for model checking concurrent processes.
+            Models are specified in the mCRL2 process algebra; formal properties can be formulated in the modal mu-calculus.
+            I have worked on several ways to improve the underlying algorithms for model checking.
+            The tools I have developed are
+            <a .text-monospace href="https://mcrl2.org/web/user_manual/tools/experimental/lpssymbolicbisim.html">
                 lpssymbolicbisim
-            \ and
-            <a href="https://mcrl2.org/web/user_manual/tools/experimental/pbessymbolicbisim.html">
+            ,
+            <a .text-monospace href="https://mcrl2.org/web/user_manual/tools/experimental/pbessymbolicbisim.html">
                 pbessymbolicbisim
+            \ and
+            <a .text-monospace href="https://mcrl2.org/web/user_manual/tools/experimental/pbespor.html">
+                pbespor
             .
-            The latter two are actually more general and can also deal with other kinds of infinite-state systems.
+            <span .text-monospace>
+              lpssymbolicbisim
+            \ and
+            <span .text-monospace>
+              pbessymbolicbisim
+            are symbolic tools for infinite-state model checking.
+            They operate on <span .font-italic>linear process specifications</span> (LPSs) and <span .font-italic>parameterised Boolean equation systems</span> (PBESs), respectively.
+            <span .text-monospace>
+              pbespor
+            \ solves PBESs through instantiation, but tries to reduce the underlying graph by applying <span .font-italic>partial-order reduction</span>.
         <div .col-sm-4>
-            <img  style="width:100%" src="@{StaticR img_mcrl2_svg}">
+            <img src="@{StaticR img_mcrl2_svg}" .img-fluid>
     <div .row>
         <div .col-md-12>
-            <h3>GPUexplore
+            <h4>GPUexplore
             For my master
             <a href="http://essay.utwente.nl/70500/">
                 thesis
@@ -38,7 +48,7 @@ $newline text
             The thesis has been awarded with the Ngi-NGN Informatie Scriptieprijs (second prize) in 2016 and was nominated for the ENIAC best thesis award.
     <div .row>
         <div .col-md-12>
-            <h3>IscasMC
+            <h4>IscasMC
             During an internship at Institute of Software, Chinese Academy of Sciences, I added symbolic bisimulation minimization of probabilistic systems to
             <a href="http://iscasmc.ios.ac.cn/">
                 IscasMC
@@ -51,8 +61,9 @@ $newline text
 
     <h1>Non-academic projects
     <div .row>
-        <div .col-sm-9>
-            <h3>CanvasKurve
+        <div .col-md-12>
+              <h4>CanvasKurve
+        <div .col-sm-10>
             A HTML5 remake of the game "Achtung die Kurve", created together with
             <a href="http://www.joostvandoorn.com/">
                 Joost van Doorn
@@ -61,7 +72,7 @@ $newline text
                 Nick Schot
             .
             This game is basically a multiplayer version of snake where you never stop growing.
-            The goal is to outmaneuver your friends.
+            The goal is to outmanouvre your friends.
             Using multiple keyboards is recommended.
             Most of this was put together in one weekend.
             A playable version can be found
@@ -71,16 +82,17 @@ $newline text
             <a href="https://github.com/JoostvDoorn/CanvasKurve">
                 Github#
             .
-        <div .col-sm-3>
-            <img src="@{StaticR img_canvaskurve_png}">
+        <div .col-sm-2>
+            <img src="@{StaticR img_canvaskurve_png}" .img-fluid>
 
     <div .row>
         <div .col-md-12>
-            <h3>This website
+            <h4>This website
             This website is implemented in Haskell, a purely functional language, and uses the
             <a href="http://www.yesodweb.com/">
                 Yesod
-            \ web framework. Haskell's type system helps prevent security problems and prevents almost all the runtime bugs.
+            \ web framework.
+            Haskell's type system catches almost all bugs at compile time and thus helps prevent security problems.
             The sources are on
             <a href="https://github.com/ThomasNeele/academic-website">
               Github#
@@ -88,7 +100,7 @@ $newline text
 
     <div .row>
         <div .col-md-12>
-            <h3>Android apps
+            <h4>Android apps
             I have worked on several Android apps within student associations at the University of Twente. I have also
             <a href="https://play.google.com/store/apps/details?id=com.tneele.daynightlwp">
                 published

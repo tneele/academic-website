@@ -1,39 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
+
+body {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2 {
+    margin-top: 1.2rem;
+}
+
+h3, h4, h5, h6 {
+    margin-top: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
 .masthead,
 .navbar {
     background-color: rgb(27, 28, 29);
 }
 
-.navbar-brand {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-
-.navbar-default .navbar-nav > .active > a {
-    background-color: transparent;
+.nav-item.active {
     border-bottom: 2px solid white;
 }
 
-.navbar-nav {
-    padding-bottom: 1em;
-}
-
 .masthead {
-    margin-top: -21px;
     color: white;
     text-align: center;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 @media (max-width: 767px) {
   .masthead {
-    min-height:300px;
+    min-height:250px;
   }
 }
 
-.glyphbutton {
+.iconbutton {
   margin: 6px;
 }
-.glyphbutton-disabled {
+.iconbutton-disabled {
   color: lightgray;
 }
 
@@ -64,6 +68,7 @@
 
 #message {
     margin-bottom: 40px;
+    margin-top: 40px;
 }
 
 .footer {
