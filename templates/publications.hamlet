@@ -1,56 +1,60 @@
 <div .container>
     <div .row>
-      <div .col-sm-12 .clearfix .mt-3>
-          <h1 .d-inline>Publications
-          <div .float-right>
-              $maybe _ <- maid
-                  <a href="@{AddPublicationR}" .btn .btn-dark .btn-md>
-                      <i .material-icons style="font-size: 16px;" .align-middle .mr-1>
-                          note_add
-                      Add publication
-              <a href="https://scholar.google.nl/citations?user=sDEqN78AAAAJ" .btn .btn-dark .btn-md>
-                  <img src="@{StaticR img_scholar_png}" width="16" height="16" .mr-1>
-                  Google Scholar
-              <a href="https://dblp.uni-trier.de/pers/hd/n/Neele:Thomas" .btn .btn-dark .btn-md>
-                  <img src="@{StaticR img_dblp_png}" width="16" height="16" .mr-1>
-                  DBLP
+        <div .col-sm-12 .clearfix .mt-3>
+            <h1 .d-inline>Publications
+            <div .float-right>
+                $maybe _ <- maid
+                    <a href="@{AddPublicationR}" .btn .btn-dark .btn-md>
+                        <i .material-icons style="font-size: 16px;" .align-middle .mr-1>
+                            note_add
+                        Add publication
+                <a href="https://scholar.google.nl/citations?user=sDEqN78AAAAJ" .btn .btn-dark .btn-md>
+                    <img src="@{StaticR img_scholar_png}" width="16" height="16" .mr-1>
+                    Google Scholar
+                <a href="https://dblp.uni-trier.de/pers/hd/n/Neele:Thomas" .btn .btn-dark .btn-md>
+                    <img src="@{StaticR img_dblp_png}" width="16" height="16" .mr-1>
+                    DBLP
     <div .row>
-      <div .col-sm-12>
-          $forall yearPublications <- publications
-              $maybe Entity _ publication <- listToMaybe yearPublications
-                  <h5>#{publicationYear publication}
-              $forall Entity publicationId publication <- yearPublications
-                  $maybe url <- getPublicationUrl publication
-                      <a target="_blank" href="#{url}" .float-right>
-                          <i .iconbutton .material-icons>
-                              open_in_new
-                  $nothing
-                      <i .float-right .iconbutton .iconbutton-disabled .material-icons>
-                          open_in_new
-                  $maybe filename <- publicationFileName publication
-                      <a target="_blank" href="@{StaticR (StaticRoute ["papers",pack filename] [])}" .float-right>
-                          <i .iconbutton .material-icons>
-                              save_alt
-                  $nothing
-                      <i .float-right .iconbutton .iconbutton-disabled .material-icons>
-                          save_alt
-                  $maybe _ <- maid
-                      <a href="@{EditPublicationR publicationId}" .float-right>
-                          <i .iconbutton .material-icons>
-                              edit
-                  <p>
-                      <i>#{publicationAuthors publication}
-                      <br>
-                      <b>#{publicationTitle publication}.
-                      $maybe volumeTitle <- publicationVolumeTitle publication
-                          \ <i>#{volumeTitle}</i>.
-                      $maybe series <- publicationSeries publication
-                          \ #{series},
-                      $maybe volume <- publicationVolume publication
-                          \ volume #{volume}
-                      $maybe issue <- publicationIssue publication
-                          \ (#{issue})
-                      $maybe pages <- publicationPages publication
-                          \ pages #{pages}.
-                      $maybe publisher <- publicationPublisher publication
-                          \ #{publisher}.
+        <div .col-sm-12>
+            $forall yearPublications <- publications
+                $maybe Entity _ publication <- listToMaybe yearPublications
+                    <h5>#{publicationYear publication}
+                $forall Entity publicationId publication <- yearPublications
+                    <div .d-flex>
+                        <div .pubtype .pubtype-#{show $ publicationType publication} title="#{show $ publicationType publication}">
+
+                        <p .flex-grow-1>
+                            <i>#{publicationAuthors publication}
+                            <br>
+                            <b>#{publicationTitle publication}.
+                            $maybe volumeTitle <- publicationVolumeTitle publication
+                                \ <i>#{volumeTitle}</i>.
+                            $maybe series <- publicationSeries publication
+                                \ #{series},
+                            $maybe volume <- publicationVolume publication
+                                \ volume #{volume}
+                            $maybe issue <- publicationIssue publication
+                                \ (#{issue})
+                            $maybe pages <- publicationPages publication
+                                \ pages #{pages}.
+                            $maybe publisher <- publicationPublisher publication
+                                \ #{publisher}.
+
+                        $maybe _ <- maid
+                        <a href="@{EditPublicationR publicationId}" .float-right>
+                            <i .iconbutton .material-icons>
+                                edit
+                        $maybe filename <- publicationFileName publication
+                            <a target="_blank" href="@{StaticR (StaticRoute ["papers",pack filename] [])}" .float-right>
+                                <i .iconbutton .material-icons>
+                                    save_alt
+                        $nothing
+                            <i .float-right .iconbutton .iconbutton-disabled .material-icons>
+                                save_alt
+                        $maybe url <- getPublicationUrl publication
+                            <a target="_blank" href="#{url}" .float-right>
+                                <i .iconbutton .material-icons>
+                                    open_in_new
+                        $nothing
+                            <i .float-right .iconbutton .iconbutton-disabled .material-icons>
+                                open_in_new

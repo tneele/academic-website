@@ -1,0 +1,43 @@
+.pubtype
+{
+    height: 10pt;
+    width: 10pt;
+    border-radius: 5pt;
+    margin-left: 8pt;
+    margin-right: 8pt;
+    margin-top: 12pt;
+    flex-shrink: 0;
+}
+
+.pubtype-Journal
+{
+    background-color: #ab4173;
+}
+.pubtype-Conference
+{
+    background-color: #3262a4;
+}
+.pubtype-Editor
+{
+    background-color: #56c1b7;
+}
+.pubtype-Book
+{
+    background-color: #f8c91f;
+}
+.pubtype-BookPart
+{
+    background-color: #ef942d;
+}
+.pubtype-ReferenceWork
+{
+    background-color: #b6d235;
+}
+.pubtype-Artifact
+{
+    background-color: #885522;
+}
+.pubtype-Other
+{
+    background-color: #626a70;
+}

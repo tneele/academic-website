@@ -30,7 +30,8 @@ data PublicationForm = PublicationForm (Maybe String -> Publication) (Maybe File
 
 publicationForm :: Maybe Publication -> AForm Handler PublicationForm
 publicationForm mpublication = PublicationForm <$> (Publication
-    <$> areq textField (bfs ("Title" :: Text)) (publicationTitle <$> mpublication)
+    <$> areq (selectField optionsEnum) (bfs ("Type of publication" :: Text)) (publicationType <$> mpublication)
+    <*> areq textField (bfs ("Title" :: Text)) (publicationTitle <$> mpublication)
     <*> areq textField (bfs ("Authors" :: Text)) (publicationAuthors <$> mpublication)
     <*> areq dayField  (bfs ("Published" :: Text)) (publicationPublished <$> mpublication)
     <*> aopt textField (bfs ("Publisher" :: Text)) (publicationPublisher <$> mpublication)
