@@ -41,9 +41,9 @@
                                 \ #{publisher}.
 
                         $maybe _ <- maid
-                        <a href="@{EditPublicationR publicationId}" .float-right>
-                            <i .iconbutton .material-icons>
-                                edit
+                            <a href="@{EditPublicationR publicationId}" .float-right>
+                                <i .iconbutton .material-icons>
+                                    edit
                         $maybe filename <- publicationFileName publication
                             <a target="_blank" href="@{StaticR (StaticRoute ["papers",pack filename] [])}" .float-right>
                                 <i .iconbutton .material-icons>
