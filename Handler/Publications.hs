@@ -81,8 +81,8 @@ paperFilePath f = uploadDirectory </> f
 writeFileToServer :: FileInfo -> Handler FilePath
 writeFileToServer file = do
     let filename = unpack $ fileName file
-        path = paperFilePath filename
-    liftIO $ fileMove file path
+        fp = paperFilePath filename
+    liftIO $ fileMove file fp
     return filename
 
 deleteOldFile :: Maybe String -> Maybe String -> Handler ()

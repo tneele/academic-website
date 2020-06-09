@@ -67,7 +67,7 @@ data MenuTypes
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
 -- | A convenient synonym for creating forms.
-type Form x = Html -> MForm (HandlerT App IO) (FormResult x, Widget)
+type Form x = Html -> MForm (HandlerFor App) (FormResult x, Widget)
 
 -- Please see the documentation for the Yesod typeclass. There are a number
 -- of settings which can be configured by overriding methods here.
@@ -100,9 +100,6 @@ instance Yesod App where
 
         muser <- maybeAuthPair
         mcurrentRoute <- getCurrentRoute
-
-        -- Get the breadcrumbs, as defined in the YesodBreadcrumbs instance.
-        (title, parents) <- breadcrumbs
 
         -- Define the menu items of the header.
         let menuItems =
@@ -190,8 +187,8 @@ instance Yesod App where
 
     -- What messages should be logged. The following includes all messages when
     -- in development, and warnings and errors in production.
-    shouldLog app _source level =
-        appShouldLogAll (appSettings app)
+    shouldLogIO app _source level =
+        return $ appShouldLogAll (appSettings app)
             || level == LevelWarn
             || level == LevelError
 
@@ -201,12 +198,6 @@ setPageName :: Text -> Widget
 setPageName title = do
     app <- getYesod
     setTitle  $ toHtml $ title ++ (" - " :: Text) ++ (appSiteName $ appSettings app)
-
--- Define breadcrumbs.
-instance YesodBreadcrumbs App where
-  breadcrumb HomeR = return ("Home", Nothing)
-  breadcrumb (AuthR _) = return ("Login", Just HomeR)
-  breadcrumb  _ = return ("home", Nothing)
 
 -- How to run database actions.
 instance YesodPersist App where
@@ -264,9 +255,9 @@ instance YesodAuth App where
         -- Enable authDummy login if enabled.
         where extraAuthPlugins = [authDummy | appAuthDummyLogin $ appSettings app]
 
-    authHttpManager = getHttpManager
+    authHttpManager = error "authHttpManager"
 
-    authLayout widget = defaultLayout [whamlet|
+    authLayout widget = liftHandler $ defaultLayout [whamlet|
         <div .container>
             <h1>Login
             ^{widget} |]
