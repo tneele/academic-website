@@ -7,6 +7,8 @@ module Handler.Publications where
 
 import Import
 import Yesod.Form.Bootstrap3 (renderBootstrap3, bfs, BootstrapFormLayout(BootstrapBasicForm))
+import Text.HTML.SanitizeXSS (sanitizeBalance)
+import Text.Blaze (preEscapedText)
 import Network.Wai (requestMethod)
 import System.Directory (removeFile)
 
@@ -26,6 +28,9 @@ getPublicationUrl pub = (fmap ("https://doi.org/" ++) mdoi) <|> murl
     where mdoi = publicationDoi pub
           murl = publicationUrl pub
 
+formatNote :: Publication -> Maybe Html
+formatNote pub = preEscapedText <$> sanitizeBalance <$> publicationNote pub
+
 data PublicationForm = PublicationForm (Maybe String -> Publication) (Maybe FileInfo)
 
 publicationForm :: Maybe Publication -> AForm Handler PublicationForm
@@ -40,6 +45,7 @@ publicationForm mpublication = PublicationForm <$> (Publication
     <*> aopt textField (bfs ("Series" :: Text)) (publicationSeries <$> mpublication)
     <*> aopt textField (bfs ("Volume" :: Text)) (publicationVolume <$> mpublication)
     <*> aopt textField (bfs ("Issue" :: Text)) (publicationIssue <$> mpublication)
+    <*> aopt textField (bfs ("Note" :: Text)) (publicationNote <$> mpublication)
     <*> aopt textField (bfs ("URL" :: Text)) (publicationUrl <$> mpublication)
     <*> aopt textField (bfs ("DOI" :: Text)) (publicationDoi <$> mpublication))
     <*> fileAFormOpt "Paper PDF"

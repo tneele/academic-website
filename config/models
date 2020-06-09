@@ -9,6 +9,7 @@ Publication
     series Text Maybe
     volume Text Maybe
     issue Text Maybe
+    note Text Maybe
     url Text Maybe
     doi Text Maybe
     fileName String Maybe

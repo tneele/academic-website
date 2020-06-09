@@ -24,21 +24,24 @@
                         <div .pubtype .pubtype-#{show $ publicationType publication} title="#{show $ publicationType publication}">
 
                         <p .flex-grow-1>
-                            <i>#{publicationAuthors publication}
+                            <i .gray>#{publicationAuthors publication}
                             <br>
-                            <b>#{publicationTitle publication}.
+                            #{publicationTitle publication}.
                             $maybe volumeTitle <- publicationVolumeTitle publication
-                                \ <i>#{volumeTitle}</i>.
-                            $maybe series <- publicationSeries publication
-                                \ #{series},
-                            $maybe volume <- publicationVolume publication
-                                \ volume #{volume}
-                            $maybe issue <- publicationIssue publication
-                                \ (#{issue})
-                            $maybe pages <- publicationPages publication
-                                \ pages #{pages}.
-                            $maybe publisher <- publicationPublisher publication
-                                \ #{publisher}.
+                                \ <i .gray>#{volumeTitle}</i>.
+                            <span .gray>
+                                $maybe series <- publicationSeries publication
+                                    \ #{series},
+                                $maybe volume <- publicationVolume publication
+                                    \ volume #{volume}
+                                $maybe issue <- publicationIssue publication
+                                    \ (#{issue})
+                                $maybe pages <- publicationPages publication
+                                    \ pages #{pages}.
+                                $maybe publisher <- publicationPublisher publication
+                                    \ #{publisher}.
+                            $maybe note <- formatNote publication
+                                \ #{note}
 
                         $maybe _ <- maid
                             <a href="@{EditPublicationR publicationId}" .float-right>
