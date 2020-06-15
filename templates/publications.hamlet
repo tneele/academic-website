@@ -28,7 +28,8 @@
                             <br>
                             #{publicationTitle publication}.
                             $maybe volumeTitle <- publicationVolumeTitle publication
-                                \ <i .gray>#{volumeTitle}</i>.
+                                \ #
+                                <i .gray>#{volumeTitle}.
                             <span .gray>
                                 $maybe series <- publicationSeries publication
                                     \ #{series},
