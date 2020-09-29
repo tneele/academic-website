@@ -9,32 +9,30 @@
             <img src=@{StaticR img_portrait_jpg} .float-right .mx-4 style="max-width: 12rem">
 
             <p>
-                I am a PhD student at the
+                I am a Postdoctoral Research Assistant at
+                <a href="https://www.royalholloway.ac.uk/research-and-teaching/departments-and-schools/computer-science/">
+                    Royal Holloway, University of London
+                (RHUL), working on model learning of concurrent automata in the
+                <a href="https://pure.royalholloway.ac.uk/portal/en/projects/verification-of-hardware-concurrency-via-model-learning(2cd44b74-e210-4985-a957-f97ac851214c).html">
+                    CLeVer
+                project.
+                Previously, I was a PhD student at the
                 <a href="https://www.tue.nl/">
                     Eindhoven University of Technology
                 (TU/e) in the group
                 <a href="https://fsa.win.tue.nl/">
                     Formal Systems Analysis
                 .
-                My project is part of a collaboration between the TU/e and
-                <a href="https://www.asml.com/">
-                    ASML
-                .
-                My main interest is model checking and its scalability problems.
-                Of course, this problem can be approached in many different ways, either by applying symbolic techniques, abstractions or parallelism.
-                I am investigating this problem in the context of <span .text-italic>parameterised Boolean equation systems</span> and <span .text-italic>parity games</span>.
+            <p>
+                My main interests are the analysis of concurrent behaviour and its associated scalability problems.
+                Of course, this problem can be approached in many different ways, either by applying symbolic techniques, abstractions or parallel computing.
+                During my PhD, I investigated this problem in the context of <span .text-italic>parameterised Boolean equation systems</span> and <span .text-italic>parity games</span>.
             <p>
                 I finished both my bachelor and master in Computer Science at the
                 <a href="https://utwente.nl/">
                     University of Twente
                 .
-                My master specialisation was Methods and Tools for Verification.
                 As part of the curriculum, I visited the
                 <a href="http://lcs.ios.ac.cn/en/wiki/Main_Page">
                     Institute of Software, Chinese Academy of Sciences
                 for an internship in the summer of 2015.
-            <p>
-                My background in model checking is diverse: I have experience with symbolic and explicit-state techniques, probabilistic models and real-time models, process algebra and also parallel implementations on GPUs.
-            <p>
-                During my master study I was a TA for the bachelor courses programming and also algorithms and data structures.
-                I currently run the exercise sessions and practical assignments for the course Automotive Software Engineering (2IWA0).
