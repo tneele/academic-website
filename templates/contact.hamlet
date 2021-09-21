@@ -7,16 +7,16 @@
                 <i .material-icons .align-top>
                     email
                 &nbsp;
-                <a href="mailto:thomas.neele@rhul.ac.uk">
-                    thomas.neele@rhul.ac.uk
+                <a href="mailto:t.s.neele@tue.nl">
+                    t.s.neele@tue.nl
 
-            $#<p>
-            $#    <i .material-icons .align-top>
-            $#        location_city
-            $#    <span style="display:inline-block;margin-left:5px;">
-            $#        MetaForum 6.080<br>
-            $#        De Groene Loper 5<br>
-            $#        Eindhoven
+            <p>
+                <i .material-icons .align-top>
+                    location_city
+                <span style="display:inline-block;margin-left:5px;">
+                    MetaForum 6.076<br>
+                    De Groene Loper 5<br>
+                    Eindhoven
 
             <p>
                 <img src="@{StaticR img_github_png}" height="24" width="24">
