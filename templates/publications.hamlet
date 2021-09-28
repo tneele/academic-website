@@ -11,7 +11,7 @@
                 <a href="https://scholar.google.nl/citations?user=sDEqN78AAAAJ" .btn .btn-dark .btn-md>
                     <img src="@{StaticR img_scholar_png}" width="16" height="16" .mr-1>
                     Google Scholar
-                <a href="https://dblp.uni-trier.de/pers/hd/n/Neele:Thomas" .btn .btn-dark .btn-md>
+                <a href="https://dblp.uni-trier.de/pid/169/6342.html" .btn .btn-dark .btn-md>
                     <img src="@{StaticR img_dblp_png}" width="16" height="16" .mr-1>
                     DBLP
     <div .row>
