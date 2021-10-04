@@ -9,20 +9,18 @@
             <img src=@{StaticR img_portrait_jpg} .float-right .mx-4 style="max-width: 12rem">
 
             <p>
-                I am a Postdoctoral Research Assistant at
-                <a href="https://www.royalholloway.ac.uk/research-and-teaching/departments-and-schools/computer-science/">
-                    Royal Holloway, University of London
-                (RHUL), working on model learning of concurrent automata in the
-                <a href="https://pure.royalholloway.ac.uk/portal/en/projects/verification-of-hardware-concurrency-via-model-learning(2cd44b74-e210-4985-a957-f97ac851214c).html">
-                    CLeVer
-                project.
-                Previously, I was a PhD student at the
+                I am an Assistant Professor at the
                 <a href="https://www.tue.nl/">
                     Eindhoven University of Technology
                 (TU/e) in the group
                 <a href="https://fsa.win.tue.nl/">
                     Formal Systems Analysis
                 .
+                Previously, I was a postdoc at
+                <a href="https://www.royalholloway.ac.uk/research-and-teaching/departments-and-schools/computer-science/">
+                    Royal Holloway, University of London
+                (RHUL), working on model learning of concurrent automata in the CLeVer project.
+                I carried out my PhD at the TU/e-FSA group; my thesis is titled "Reductions for Parity Games and Model Checking".
             <p>
                 My main interests are the analysis of concurrent behaviour and its associated scalability problems.
                 Of course, this problem can be approached in many different ways, either by applying symbolic techniques, abstractions or parallel computing.
