@@ -1,0 +1,14 @@
+$newline text
+<div .container>
+
+    <h1>Courses
+    <ul>
+      <li>Automated Reasoning (2IMF25), grading, 2021-2022
+      <li>Software Specification (2IX20), instructor, 2021-2022
+
+    <h2>Past Courses
+    <ul>
+      <li>Automotive Software Engineering (2IWA0), instructor, 2016-2017, 2017-2018, 2019-2020, 2020-2021
+      <li>Design-based Learning: Embedded Systems (2IO70), instructor, 2016-2017
+      <li>Algorithms and Data Structures, University of Twente, teaching assistant, 2015-2016
+      <li>Programming, University of Twente, teaching assistant, 2014-2015

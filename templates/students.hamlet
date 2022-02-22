@@ -1,0 +1,58 @@
+<div .container>
+
+    <h1>Master's projects
+    <p>
+      If you are a Computer Science or Embedded Systems student and are looking for a final project, you can have a look at the descriptions below.
+      Contact me if you are interested in one of these projects, or if you have your own idea for a project.
+
+    <h4>Formalising Partial-Order Reduction Theory in Proof Assistants or Other Tools
+    <p>
+      A common problem in model checking is the explosion of the state space making verification often prohibitively expensive.
+      One technique to partially resolve this problem is partial-order reduction (POR), which was first proposed at the end of the 1980s.
+      Since then, many variants have appeared.
+      Some of these operate on Kripke structures or Labelled Transition Systems and preserve common temporal logics such as LTL or CTL.
+      Others are designed for formalisms such as parity games and try to preserve the winning player.
+
+    <p>
+      It turns out however, that correctness proofs for POR are very meticulous, and some even contain mistakes [1,2].
+      The goal of this project is to apply tools to verify the correctness of these proofs.
+      Several possibilities are tools like Alloy, Coq or Isabelle.
+
+    <p>
+      [1]: Thomas Neele, Antti Valmari, Tim A. C. Willemse.
+      <a href="https://doi.org/10.46298/lmcs-17(3:8)2021">
+        A Detailed Account of The Inconsistent Labelling Problem of Stutter-Preserving Partial-Order Reduction.
+      \ Logical Methods in Computer Science, volume 17 (3) pages 8:1-8:27.
+      <br />
+      [2]: Stephen F. Siegel.
+      <a href="https://doi.org/10.1007/978-3-030-25543-5_27">
+        What’s Wrong with On-the-Fly Partial Order Reduction.
+      \ In CAV 2019, volume 11562 of LNCS, pages 478–495, 2019.
+
+    <h2>Finished projects
+    <ul>
+      <li>
+        Yuanteng Pan,
+        <a href="https://research.tue.nl/en/studentTheses/an-automatic-transformation-for-multi-component-systems-from-alia">
+          An Automatic Transformation for Multi-Component Systems from ALIAS to mCRL2
+        , 2020
+      <li>
+        Tao Hong,
+        <a href="https://research.tue.nl/en/studentTheses/an-analysis-of-asd-timers-and-their-expressivity-with-mcrl2">
+          An Analysis of ASD Timers and Their Expressivity with mCRL2
+        , 2019
+      <li>
+        Marijn Rol,
+        <a href="https://research.tue.nl/en/studentTheses/verification-of-asd-multi-component-systems-in-mcrl2">
+          Verification of ASD multi-component systems in mCRL2
+        , 2018
+      <li>
+        Bram Bosch,
+        <a href="https://research.tue.nl/en/studentTheses/a-formal-processor-model-in-mcrl2">
+          A formal processor model in mCRL2
+        , 2017
+      <li>
+        Chong Liu,
+        <a href="https://research.tue.nl/en/studentTheses/discretization-for-timed-mcrl2-models-using-the-region-based-cons">
+          Discretization for timed mCRL2 models using the region based construction
+        , 2016

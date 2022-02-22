@@ -109,13 +109,23 @@ instance Yesod App where
                     , menuItemAccessCallback = True
                     }
                 , NavbarLeft $ MenuItem
-                    { menuItemLabel = "Projects"
-                    , menuItemRoute = ProjectsR
+                    { menuItemLabel = "Research"
+                    , menuItemRoute = ResearchR
                     , menuItemAccessCallback = True
                     }
                 , NavbarLeft $ MenuItem
                     { menuItemLabel = "Publications"
                     , menuItemRoute = PublicationsR
+                    , menuItemAccessCallback = True
+                    }
+                , NavbarLeft $ MenuItem
+                    { menuItemLabel = "Courses"
+                    , menuItemRoute = CoursesR
+                    , menuItemAccessCallback = True
+                    }
+                , NavbarLeft $ MenuItem
+                    { menuItemLabel = "Students"
+                    , menuItemRoute = StudentsR
                     , menuItemAccessCallback = True
                     }
                 , NavbarLeft $ MenuItem
@@ -159,8 +169,10 @@ instance Yesod App where
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
-    isAuthorized ProjectsR _ = return Authorized
+    isAuthorized ResearchR _ = return Authorized
     isAuthorized PublicationsR _ = return Authorized
+    isAuthorized CoursesR _ = return Authorized
+    isAuthorized StudentsR _ = return Authorized
     isAuthorized ContactR _ = return Authorized
 
     isAuthorized (EditPublicationR _) _ = isAuthenticated

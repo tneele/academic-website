@@ -1,7 +1,16 @@
 $newline text
 <div .container>
 
-    <h1>Academic software
+    <h2>Projects
+    <ul>
+      <li>MACHINAIDE: Knowledge-based services for and optimization of machines, Faculty Participant (2022)
+      <li>CLeVer: Verification of Hardware Concurrency via Model Learning, Postdoctoral Research Assistant (2020-2021)
+
+    <h2>Tools
+
+    <p>
+      Below is a short description of the academic tools I work on or have worked on.
+
     <div .row>
         <div .col-md-12>
             <h4>mCRL2
@@ -46,62 +55,3 @@ $newline text
             I added partial-order reduction to improve the memory efficiency and improved the speed with a factor 11 over the previous version.
             This brought the total speed-up over a single-threaded implementation to well over a hundred times.
             The thesis has been awarded with the Ngi-NGN Informatie Scriptieprijs (second prize) in 2016 and was nominated for the ENIAC best thesis award.
-    <div .row>
-        <div .col-md-12>
-            <h4>IscasMC
-            During an internship at Institute of Software, Chinese Academy of Sciences, I added symbolic bisimulation minimization of probabilistic systems to
-            <a href="http://iscasmc.ios.ac.cn/">
-                IscasMC
-            .
-            In addition, I added the parallel BDD package
-            <a href="http://fmt.cs.utwente.nl/tools/sylvan/">
-                Sylvan
-            \ as symbolic back-end.
-
-
-    <h1>Non-academic projects
-    <div .row>
-        <div .col-md-12>
-              <h4>CanvasKurve
-        <div .col-sm-10>
-            A HTML5 remake of the game "Achtung die Kurve", created together with
-            <a href="http://www.joostvandoorn.com/">
-                Joost van Doorn
-            \ and
-            <a href="https://nickschot.nl/">
-                Nick Schot
-            .
-            This game is basically a multiplayer version of snake where you never stop growing.
-            The goal is to outmanouvre your friends.
-            Using multiple keyboards is recommended.
-            Most of this was put together in one weekend.
-            A playable version can be found
-            <a href="@{StaticR canvaskurve_index_html}">
-                here
-            \ and the source can be found on
-            <a href="https://github.com/JoostvDoorn/CanvasKurve">
-                Github#
-            .
-        <div .col-sm-2>
-            <img src="@{StaticR img_canvaskurve_png}" .img-fluid>
-
-    <div .row>
-        <div .col-md-12>
-            <h4>This website
-            This website is implemented in Haskell, a purely functional language, and uses the
-            <a href="http://www.yesodweb.com/">
-                Yesod
-            \ web framework.
-            Haskell's type system catches almost all bugs at compile time and thus helps prevent security problems.
-            The sources are on
-            <a href="https://github.com/ThomasNeele/academic-website">
-              Github#
-            .
-
-    <div .row>
-        <div .col-md-12>
-            <h4>Android apps
-            I have worked on several Android apps within student associations at the University of Twente. I have also
-            <a href="https://play.google.com/store/apps/details?id=com.tneele.daynightlwp">
-                published
-            \ my own application.

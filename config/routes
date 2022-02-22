@@ -6,10 +6,12 @@
 
 / HomeR GET
 
-/projects ProjectsR GET
+/research ResearchR GET
 
 /publications PublicationsR GET
 /publication/edit/#PublicationId EditPublicationR
 /publication/add AddPublicationR
 
+/courses CoursesR GET
+/students StudentsR GET
 /contact ContactR GET
