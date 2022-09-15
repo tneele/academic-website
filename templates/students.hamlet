@@ -5,29 +5,29 @@
       If you are a Computer Science or Embedded Systems student and are looking for a final project, you can have a look at the descriptions below.
       Contact me if you are interested in one of these projects, or if you have your own idea for a project.
 
-    <h4>Inferring Automata from a Finite Sample with SAT
-    <p>
-      The general question is: find an automaton (DFA) for which the accepting language complies with a give sample of words, containing words that must be accepted by the DFA and words that must be rejected.
-      This is a very natural question: the learned automaton describes a set of words, and can be used to predict whether a new string is in the language or not.
-
-    <p>
-      However, the problem of finding a minimal DFA consistent with a sample is NP-complete, so the computation time grows quickly with the sample set of strings.
-      There are some existing ideas on how to encode this problem in a Boolean formula, to be solved by SAT solver [1].
-      The scalability is not great, though.
-
-    <p>
-      The goal of this project is to investigate whether better performance can be achieved when the presented data sample has more structure.
-      For example, it may be stored in an observation table, as used in Angluin's L* algorithm.
-      New ideas have to be implemented and experimentally compared to existing SAT encodings.
-
-    <p>
-      A possible extension is to investigate whether other automata models, such as non-deterministic automata (NFAs), can be efficiently generated in the same manner.
-
-    <p>
-      [1]: Leucker M., Neider D.
-      <a href="https://doi.org/10.1007/978-3-642-34026-0_39">
-        Learning Minimal Deterministic Automata from Inexperienced Teachers.
-      \ ISoLA 2012. LNCS, vol 7609. Springer.
+    $# <h4>Inferring Automata from a Finite Sample with SAT
+    $# <p>
+    $#   The general question is: find an automaton (DFA) for which the accepting language complies with a give sample of words, containing words that must be accepted by the DFA and words that must be rejected.
+    $#   This is a very natural question: the learned automaton describes a set of words, and can be used to predict whether a new string is in the language or not.
+    $#
+    $# <p>
+    $#   However, the problem of finding a minimal DFA consistent with a sample is NP-complete, so the computation time grows quickly with the sample set of strings.
+    $#   There are some existing ideas on how to encode this problem in a Boolean formula, to be solved by SAT solver [1].
+    $#   The scalability is not great, though.
+    $#
+    $# <p>
+    $#   The goal of this project is to investigate whether better performance can be achieved when the presented data sample has more structure.
+    $#   For example, it may be stored in an observation table, as used in Angluin's L* algorithm.
+    $#   New ideas have to be implemented and experimentally compared to existing SAT encodings.
+    $#
+    $# <p>
+    $#   A possible extension is to investigate whether other automata models, such as non-deterministic automata (NFAs), can be efficiently generated in the same manner.
+    $#
+    $# <p>
+    $#   [1]: Leucker M., Neider D.
+    $#   <a href="https://doi.org/10.1007/978-3-642-34026-0_39">
+    $#     Learning Minimal Deterministic Automata from Inexperienced Teachers.
+    $#   \ ISoLA 2012. LNCS, vol 7609. Springer.
 
     <h4>Formalising Partial-Order Reduction Theory in Proof Assistants or Other Tools
     <p>
@@ -52,6 +52,11 @@
       <a href="https://doi.org/10.1007/978-3-030-25543-5_27">
         What’s Wrong with On-the-Fly Partial Order Reduction.
       \ In CAV 2019, volume 11562 of LNCS, pages 478–495, 2019.
+
+    <h2>Ongoing projects
+    <ul>
+      <li>Sky Sarah van Grieken, Inferring Automata from a Finite Sample with SAT
+      <li>Gijs van Leemrijse, Constructing a Compiler for Linked Object Processing Language
 
     <h2>Finished projects
     <ul>
