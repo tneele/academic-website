@@ -8,12 +8,18 @@
                         <i .material-icons style="font-size: 16px;" .align-middle .mr-1>
                             note_add
                         Add publication
-                <a href="https://scholar.google.nl/citations?user=sDEqN78AAAAJ" .btn .btn-dark .btn-md>
+                <a target="_blank" href="https://scholar.google.nl/citations?user=sDEqN78AAAAJ" .btn .btn-dark .btn-md>
                     <img src="@{StaticR img_scholar_png}" width="16" height="16" .mr-1>
                     Google Scholar
-                <a href="https://dblp.uni-trier.de/pid/169/6342.html" .btn .btn-dark .btn-md>
+                <a target="_blank" href="https://dblp.uni-trier.de/pid/169/6342.html" .btn .btn-dark .btn-md>
                     <img src="@{StaticR img_dblp_png}" width="16" height="16" .mr-1>
                     DBLP
+                <a target="_blank" href="https://orcid.org/0000-0001-6117-9129" .btn .btn-dark .btn-md>
+                    <img src="@{StaticR img_orcid_png}" width="16" height="16" .mr-1>
+                    ORCID
+                <a target="_blank" href="https://research.tue.nl/en/persons/thomas-s-neele" .btn .btn-dark .btn-md>
+                    <img src="@{StaticR img_tue_png}" width="16" height="16" .mr-1>
+                    TU/e
     <div .row>
         <div .col-sm-12>
             $forall yearPublications <- publications
