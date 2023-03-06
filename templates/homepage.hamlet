@@ -14,23 +14,23 @@
                     Eindhoven University of Technology
                 (TU/e) in the group
                 <a href="https://fsa.win.tue.nl/">
-                    Formal Systems Analysis
+                    Formal System Analysis
                 .
+                My main interests are the analysis of concurrent behaviour and its associated scalability problems.
+                In the context of model checking, I study <span class="font-italic">symbolic techniques</span>, <span class="font-italic">syntactic transformations</span> for reduction, and <span class="font-italic">partial-order reduction</span>.
+                My other interests are <span class="font-italic">fixpoint logics</span> and <span class="font-italic">automata learning</span>.
+            <p>
                 Previously, I was a postdoc at
                 <a href="https://www.royalholloway.ac.uk/research-and-teaching/departments-and-schools/computer-science/">
                     Royal Holloway, University of London
                 (RHUL), working on model learning of concurrent automata in the CLeVer project.
                 I carried out my PhD at the TU/e-FSA group; my thesis is titled "Reductions for Parity Games and Model Checking".
-            <p>
-                My main interests are the analysis of concurrent behaviour and its associated scalability problems.
-                Of course, this problem can be approached in many different ways, either by applying symbolic techniques, abstractions or parallel computing.
-                During my PhD, I investigated this problem in the context of <span .text-italic>parameterised Boolean equation systems</span> and <span .text-italic>parity games</span>.
-            <p>
                 I finished both my bachelor and master in Computer Science at the
                 <a href="https://utwente.nl/">
                     University of Twente
                 .
                 As part of the curriculum, I visited the
-                <a href="http://lcs.ios.ac.cn/en/wiki/Main_Page">
-                    Institute of Software, Chinese Academy of Sciences
+                <a href="https://tis.ios.ac.cn/">
+                    Trustworthy and Intelligent Systems
+                group at Chinese Academy of Sciences
                 for an internship in the summer of 2015.

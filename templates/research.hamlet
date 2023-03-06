@@ -9,7 +9,7 @@ $newline text
     <h2>Tools
 
     <p>
-      Below is a short description of the academic tools I work on or have worked on.
+      Below is a short description of the formal methods tools I work on or have worked on.
 
     <div .row>
         <div .col-md-12>
@@ -20,26 +20,10 @@ $newline text
             \ is a toolset for model checking concurrent processes.
             Models are specified in the mCRL2 process algebra; formal properties can be formulated in the modal mu-calculus.
             I have worked on several ways to improve the underlying algorithms for model checking.
-            The tools I have developed are
-            <a .text-monospace href="https://mcrl2.org/web/user_manual/tools/experimental/lpssymbolicbisim.html">
-                lpssymbolicbisim
-            ,
-            <a .text-monospace href="https://mcrl2.org/web/user_manual/tools/experimental/pbessymbolicbisim.html">
-                pbessymbolicbisim
-            \ and
-            <a .text-monospace href="https://mcrl2.org/web/user_manual/tools/experimental/pbespor.html">
-                pbespor
-            .
-            <span .text-monospace>
-              lpssymbolicbisim
-            \ and
-            <span .text-monospace>
-              pbessymbolicbisim
-            are symbolic tools for infinite-state model checking.
-            They operate on <span .font-italic>linear process specifications</span> (LPSs) and <span .font-italic>parameterised Boolean equation systems</span> (PBESs), respectively.
-            <span .text-monospace>
-              pbespor
-            \ solves PBESs through instantiation, but tries to reduce the underlying graph by applying <span .font-italic>partial-order reduction</span>.
+            The tools I have developed are <a class="text-monospace" href="https://mcrl2.org/web/user_manual/tools/experimental/lpssymbolicbisim.html">lpssymbolicbisim</a>, <a class="text-monospace" href="https://mcrl2.org/web/user_manual/tools/experimental/pbessymbolicbisim.html">pbessymbolicbisim</a> and <a class="text-monospace" href="https://mcrl2.org/web/user_manual/tools/experimental/pbespor.html">pbespor</a>.
+            <span class="text-monospace">lpssymbolicbisim</span> and <span class="text-monospace">pbessymbolicbisim</span> are symbolic tools for infinite-state model checking.
+            They operate on <span class="font-italic">linear process specifications</span> (LPSs) and <span class="font-italic">parameterised Boolean equation systems</span> (PBESs), respectively.
+            <span class="text-monospace">pbespor</span> solves PBESs through instantiation, but tries to reduce the underlying graph by applying <span class="font-italic">partial-order reduction</span>.
         <div .col-sm-4>
             <img src="@{StaticR img_mcrl2_svg}" .img-fluid>
     <div .row>
